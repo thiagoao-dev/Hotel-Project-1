@@ -29,7 +29,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="painelPrincipal" alignment="0" pref="384" max="32767" attributes="0"/>
+          <Component id="painelPrincipal" alignment="0" pref="388" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -85,7 +85,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="inputDataSaida" pref="280" max="32767" attributes="0"/>
+                                      <Component id="inputDataSaida" pref="254" max="32767" attributes="0"/>
                                       <Component id="inputEmail" max="32767" attributes="0"/>
                                       <Component id="inputValorPagamento" alignment="1" max="32767" attributes="0"/>
                                   </Group>
@@ -159,7 +159,7 @@
                       <Component id="labelPago" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="inputCheckPago" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
                   <Component id="btInserir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
