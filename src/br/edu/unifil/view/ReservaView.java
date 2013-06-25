@@ -253,8 +253,13 @@ public class ReservaView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+        
         // TODO add your handling code here:
-        System.out.println("asdasd");
+        if( this.inputNome.getText().equals("") ) {
+            System.out.println("o");
+        }
+        
+        
     }//GEN-LAST:event_btInserirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
