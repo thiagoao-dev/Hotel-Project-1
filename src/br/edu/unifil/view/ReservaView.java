@@ -4,7 +4,9 @@
  */
 package br.edu.unifil.view;
 
-import java.awt.event.KeyEvent;
+import br.edu.unifil.model.QuartoModel;
+import br.edu.unifil.model.ReservaModel;
+import br.edu.unifil.model.VisitanteModel;
 
 /**
  *
@@ -18,7 +20,7 @@ public class ReservaView extends javax.swing.JInternalFrame {
     public ReservaView() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,10 +38,8 @@ public class ReservaView extends javax.swing.JInternalFrame {
         inputTelefone = new javax.swing.JTextField();
         labelEmail = new javax.swing.JLabel();
         inputEmail = new javax.swing.JTextField();
-        inputDataEntrada = new javax.swing.JTextField();
         labelDataEntrada = new javax.swing.JLabel();
         labelDataSaida = new javax.swing.JLabel();
-        inputDataSaida = new javax.swing.JTextField();
         labelQuarto = new javax.swing.JLabel();
         inputComboQuarto = new javax.swing.JComboBox();
         inputValorPagamento = new javax.swing.JTextField();
@@ -50,6 +50,8 @@ public class ReservaView extends javax.swing.JInternalFrame {
         labelPago = new javax.swing.JLabel();
         inputCheckPago = new javax.swing.JCheckBox();
         btInserir = new javax.swing.JButton();
+        inputEntrada = new org.jdesktop.swingx.JXDatePicker();
+        inputSaida = new org.jdesktop.swingx.JXDatePicker();
 
         setClosable(true);
         setTitle("Cadastro de Reserva");
@@ -86,10 +88,6 @@ public class ReservaView extends javax.swing.JInternalFrame {
         inputEmail.setForeground(new java.awt.Color(51, 51, 51));
         inputEmail.setToolTipText("Digite o nome do hospede");
 
-        inputDataEntrada.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        inputDataEntrada.setForeground(new java.awt.Color(51, 51, 51));
-        inputDataEntrada.setToolTipText("Digite o nome do hospede");
-
         labelDataEntrada.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         labelDataEntrada.setForeground(new java.awt.Color(102, 102, 102));
         labelDataEntrada.setText("Entrada");
@@ -97,10 +95,6 @@ public class ReservaView extends javax.swing.JInternalFrame {
         labelDataSaida.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         labelDataSaida.setForeground(new java.awt.Color(102, 102, 102));
         labelDataSaida.setText("Saída");
-
-        inputDataSaida.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        inputDataSaida.setForeground(new java.awt.Color(51, 51, 51));
-        inputDataSaida.setToolTipText("Digite o nome do hospede");
 
         labelQuarto.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         labelQuarto.setForeground(new java.awt.Color(102, 102, 102));
@@ -143,6 +137,10 @@ public class ReservaView extends javax.swing.JInternalFrame {
             }
         });
 
+        inputEntrada.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        inputSaida.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
         painelPrincipalLayout.setHorizontalGroup(
@@ -171,16 +169,16 @@ public class ReservaView extends javax.swing.JInternalFrame {
                                     .addGroup(painelPrincipalLayout.createSequentialGroup()
                                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(inputComboQuarto, 0, 180, Short.MAX_VALUE)
-                                            .addComponent(inputDataEntrada))
+                                            .addComponent(inputEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(15, 15, 15)
                                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(labelDataSaida)
                                             .addComponent(labelValorPagamento))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(inputDataSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                                    .addComponent(inputEmail)
-                                    .addComponent(inputValorPagamento, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                    .addComponent(inputEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                    .addComponent(inputValorPagamento, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(inputSaida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addComponent(inputScrollObs)
                     .addGroup(painelPrincipalLayout.createSequentialGroup()
                         .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,11 +212,12 @@ public class ReservaView extends javax.swing.JInternalFrame {
                     .addComponent(labelEmail)
                     .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputDataEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDataSaida)
-                    .addComponent(inputDataSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDataEntrada))
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelDataSaida)
+                        .addComponent(labelDataEntrada)
+                        .addComponent(inputSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelQuarto)
@@ -233,7 +232,7 @@ public class ReservaView extends javax.swing.JInternalFrame {
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPago)
                     .addComponent(inputCheckPago))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -246,7 +245,7 @@ public class ReservaView extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
         );
 
         pack();
@@ -254,12 +253,20 @@ public class ReservaView extends javax.swing.JInternalFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         
-        // TODO add your handling code here:
-        if( this.inputNome.getText().equals("") ) {
-            System.out.println("o");
-        }
+        // Inicia os atributos necessários
+        VisitanteModel hospede = new VisitanteModel();
+        QuartoModel    quarto  = new QuartoModel();
+        ReservaModel   reserva = new ReservaModel();
         
+        reserva.setVisitanteReserva(hospede);
+        reserva.setQuartoReserva(quarto);
         
+        // Recupera o quarto
+        quarto.setDescricaoQuarto((String) this.inputComboQuarto.getSelectedItem());
+        
+        System.out.println(this.inputComboQuarto.getSelectedItem());
+        
+        this.dispose();
     }//GEN-LAST:event_btInserirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -267,10 +274,10 @@ public class ReservaView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btPesquisar;
     private javax.swing.JCheckBox inputCheckPago;
     private javax.swing.JComboBox inputComboQuarto;
-    private javax.swing.JTextField inputDataEntrada;
-    private javax.swing.JTextField inputDataSaida;
     private javax.swing.JTextField inputEmail;
+    private org.jdesktop.swingx.JXDatePicker inputEntrada;
     private javax.swing.JTextField inputNome;
+    private org.jdesktop.swingx.JXDatePicker inputSaida;
     private javax.swing.JScrollPane inputScrollObs;
     private javax.swing.JTextField inputTelefone;
     private javax.swing.JTextArea inputTextObs;
