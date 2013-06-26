@@ -6,7 +6,7 @@ package br.edu.unifil.model;
  */
 public class VisitanteModel {
 
-    // Declara as variaveis
+    // Define atributos do objeto
     private int    idVisitante;
     private String nomeVisitante;
     private String telefoneVisitante;

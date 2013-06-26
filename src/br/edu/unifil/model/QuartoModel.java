@@ -6,10 +6,11 @@ package br.edu.unifil.model;
  */
 public class QuartoModel {
     
+    // Define atributos do objeto
     private int    idQuarto;
-    private int    tipoQuarto;
     private int    capacidadeQuarto;
     private String descricaoQuarto;
+    private TipoQuartoModel tipoQuarto;
     
     /**
      * Inicia os atributos do objeto
@@ -18,7 +19,7 @@ public class QuartoModel {
         
         // Adciona os valores aos atributos do objeto
         this.idQuarto         = 0;
-        this.tipoQuarto       = 0;
+        this.tipoQuarto       = null;
         this.capacidadeQuarto = 0;
         this.descricaoQuarto  = null;
         
@@ -30,7 +31,7 @@ public class QuartoModel {
      * @param capacidadeQuarto
      * @param descricaoQuarto 
      */
-    public QuartoModel( int tipoQuarto,
+    public QuartoModel( TipoQuartoModel tipoQuarto,
             int capacidadeQuarto,
             String descricaoQuarto ) {
         
@@ -49,7 +50,7 @@ public class QuartoModel {
      * @param descricaoQuarto 
      */
     public QuartoModel( int idQuarto,
-            int tipoQuarto,
+            TipoQuartoModel tipoQuarto,
             int capacidadeQuarto,
             String descricaoQuarto ) {
         
@@ -85,7 +86,7 @@ public class QuartoModel {
     /**
      * @return the tipoQuarto
      */
-    public int getTipoQuarto() {
+    public TipoQuartoModel getTipoQuarto() {
         return tipoQuarto;
     }
 
@@ -93,7 +94,7 @@ public class QuartoModel {
      * @param tipoQuarto the tipoQuarto to set
      * @return boolean
      */
-    public boolean setTipoQuarto(int tipoQuarto) {
+    public boolean setTipoQuarto(TipoQuartoModel tipoQuarto) {
         // Atribui o valor ao atributo id
         try {
             this.tipoQuarto = tipoQuarto;
