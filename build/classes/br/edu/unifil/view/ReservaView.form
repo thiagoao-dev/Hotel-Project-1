@@ -74,9 +74,9 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="inputComboQuarto" pref="180" max="32767" attributes="0"/>
-                                              <Component id="inputDataEntrada" max="32767" attributes="0"/>
+                                              <Component id="inputEntrada" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                          <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="labelDataSaida" min="-2" max="-2" attributes="0"/>
                                               <Component id="labelValorPagamento" min="-2" max="-2" attributes="0"/>
@@ -85,9 +85,9 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="inputDataSaida" pref="254" max="32767" attributes="0"/>
-                                      <Component id="inputEmail" max="32767" attributes="0"/>
+                                      <Component id="inputEmail" pref="254" max="32767" attributes="0"/>
                                       <Component id="inputValorPagamento" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="inputSaida" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -137,11 +137,13 @@
                       <Component id="inputEmail" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="inputDataEntrada" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="labelDataSaida" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="inputDataSaida" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="labelDataEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelDataSaida" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelDataEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="inputSaida" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="inputEntrada" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -242,17 +244,6 @@
             <Property name="toolTipText" type="java.lang.String" value="Digite o nome do hospede"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputDataEntrada">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="33" type="rgb"/>
-            </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Digite o nome do hospede"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="labelDataEntrada">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -273,17 +264,6 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sa&#xed;da"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="inputDataSaida">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="33" type="rgb"/>
-            </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Digite o nome do hospede"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelQuarto">
@@ -402,6 +382,20 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btInserirActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="org.jdesktop.swingx.JXDatePicker" name="inputEntrada">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="12" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="org.jdesktop.swingx.JXDatePicker" name="inputSaida">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="12" style="0"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
