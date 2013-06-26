@@ -13,7 +13,7 @@ public class VisitanteModel {
     private String emailVisitante;
     
     /**
-     * Inicia os atributos do objeto
+     * Metodo construtor
      */
     public VisitanteModel(){ 
     
@@ -23,38 +23,6 @@ public class VisitanteModel {
         this.telefoneVisitante = null;
         this.emailVisitante    = null;
         
-    }
-    
-    /**
-     * Adciona os valores aos atributos
-     * @param idVisitante
-     * @param nomeVisitante
-     * @param telefoneVisitante
-     * @param emailVisitante 
-     */
-    public VisitanteModel( int idVisitante, 
-            String nomeVisitante, 
-            String telefoneVisitante,
-            String emailVisitante ) {  
-        
-        // Seta os valores aos atributos
-        this.idVisitante       = idVisitante;
-        this.nomeVisitante     = nomeVisitante;
-        this.telefoneVisitante = telefoneVisitante;
-        this.emailVisitante    = emailVisitante;
-    
-    }
-    
-    /**
-     * Adciona os valores aos atributos
-     * @param nomeVisitante
-     * @param telefoneVisitante
-     * @param emailVisitante 
-     */
-    public VisitanteModel( String nomeVisitante, 
-            String telefoneVisitante,
-            String emailVisitante ) {  
-    
     }
     
     /**

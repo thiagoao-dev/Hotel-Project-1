@@ -13,7 +13,7 @@ public class QuartoModel {
     private TipoQuartoModel tipoQuarto;
     
     /**
-     * Inicia os atributos do objeto
+     * Metodo construtor
      */
     public QuartoModel( ) {
         
@@ -22,43 +22,6 @@ public class QuartoModel {
         this.tipoQuarto       = null;
         this.capacidadeQuarto = 0;
         this.descricaoQuarto  = null;
-        
-    }
-    
-    /**
-     * Inicia os atributos do objeto
-     * @param tipoQuarto
-     * @param capacidadeQuarto
-     * @param descricaoQuarto 
-     */
-    public QuartoModel( TipoQuartoModel tipoQuarto,
-            int capacidadeQuarto,
-            String descricaoQuarto ) {
-        
-        // Adciona os valores aos atributos do objeto
-        this.tipoQuarto       = tipoQuarto;
-        this.capacidadeQuarto = capacidadeQuarto;
-        this.descricaoQuarto  = descricaoQuarto;
-        
-    }
-    
-    /**
-     * Inicia os atributos do objeto
-     * @param idQuarto
-     * @param tipoQuarto
-     * @param capacidadeQuarto
-     * @param descricaoQuarto 
-     */
-    public QuartoModel( int idQuarto,
-            TipoQuartoModel tipoQuarto,
-            int capacidadeQuarto,
-            String descricaoQuarto ) {
-        
-        // Adciona os valores aos atributos do objeto
-        this.idQuarto         = idQuarto;
-        this.tipoQuarto       = tipoQuarto;
-        this.capacidadeQuarto = capacidadeQuarto;
-        this.descricaoQuarto  = descricaoQuarto;
         
     }
     

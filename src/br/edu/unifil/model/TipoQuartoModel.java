@@ -11,7 +11,7 @@ public class TipoQuartoModel {
     private String descricaoTipoQuarto;
     
     /**
-     * Inicia os valores do atributo
+     * Metodo construtor
      */
     public TipoQuartoModel( ) {
         
@@ -21,30 +21,6 @@ public class TipoQuartoModel {
         
     }
     
-    /**
-     * Define os valores do atributo
-     * @param descricaoTipoQuarto 
-     */
-    public TipoQuartoModel( String descricaoTipoQuarto ) {
-        
-        // Adciona os valores aos atributos do objeto
-        this.descricaoTipoQuarto = descricaoTipoQuarto;
-        
-    }
-    
-    /**
-     * Define os valores do atributo
-     * @param idTipoQuarto
-     * @param descricaoTipoQuarto 
-     */
-    public TipoQuartoModel( int idTipoQuarto, String descricaoTipoQuarto ) {
-        
-        // Adciona os valores aos atributos do objeto
-        this.idTipoQuarto        = idTipoQuarto;
-        this.descricaoTipoQuarto = descricaoTipoQuarto;
-        
-    }
-
     /**
      * @return the idTipoQuarto
      */

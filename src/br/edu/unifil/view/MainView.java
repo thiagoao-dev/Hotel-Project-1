@@ -1,11 +1,16 @@
 package br.edu.unifil.view;
 
+import br.edu.unifil.model.UsuarioModel;
+
 public class MainView extends javax.swing.JFrame {
 
     private ReservaView reservaView = null;
+    private QuartoView  quartoView  = null;
+    private UsuarioModel usuario;
     
     public MainView() {
         initComponents();
+        this.usuario = new UsuarioModel();
     }
 
     /**
@@ -89,11 +94,6 @@ public class MainView extends javax.swing.JFrame {
         btReservaFazer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         btReservaFazer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-reserve.png"))); // NOI18N
         btReservaFazer.setText("Fazer Reserva");
-        btReservaFazer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btReservaFazerMouseClicked(evt);
-            }
-        });
         btReservaFazer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btReservaFazerActionPerformed(evt);
@@ -108,6 +108,11 @@ public class MainView extends javax.swing.JFrame {
         btQuartoConsultar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         btQuartoConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-room.png"))); // NOI18N
         btQuartoConsultar.setText("Consultar");
+        btQuartoConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btQuartoConsultarActionPerformed(evt);
+            }
+        });
         btQuarto.add(btQuartoConsultar);
 
         menuPrincipal.add(btQuarto);
@@ -186,7 +191,7 @@ public class MainView extends javax.swing.JFrame {
     private void btReservaFazerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservaFazerActionPerformed
         // TODO add your handling code here:
         if ( this.reservaView == null || this.reservaView.isClosed() ) {
-            this.reservaView = new ReservaView();
+            this.reservaView = new ReservaView(this.usuario);
             desktopPrincipal.add(this.reservaView);
             this.reservaView.setVisible(true);
         } else {
@@ -194,16 +199,16 @@ public class MainView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btReservaFazerActionPerformed
 
-    private void btReservaFazerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btReservaFazerMouseClicked
+    private void btQuartoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuartoConsultarActionPerformed
         // TODO add your handling code here:
-        if ( this.reservaView == null || this.reservaView.isClosed() ) {
-            this.reservaView = new ReservaView();
-            desktopPrincipal.add(this.reservaView);
-            this.reservaView.setVisible(true);
+        if ( this.quartoView == null || this.quartoView.isClosed() ) {
+            this.quartoView = new QuartoView(this.usuario);
+            desktopPrincipal.add(this.quartoView);
+            this.quartoView.setVisible(true);
         } else {
             System.out.println("Não é possivel criar uma nova instância!");
         }
-    }//GEN-LAST:event_btReservaFazerMouseClicked
+    }//GEN-LAST:event_btQuartoConsultarActionPerformed
 
     /**
      * @param args the command line arguments

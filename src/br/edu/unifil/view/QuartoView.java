@@ -4,19 +4,25 @@
  */
 package br.edu.unifil.view;
 
+import br.edu.unifil.model.UsuarioModel;
+
 /**
  *
  * @author ThiagoAugustus
  */
 public class QuartoView extends javax.swing.JInternalFrame {
 
+    private UsuarioModel usuario;
+    
     /**
-     * Creates new form QuartoView
+     * Classe construtora
+     * @param usuario 
      */
-    public QuartoView() {
+    public QuartoView(UsuarioModel usuario) {
         initComponents();
+        this.usuario = usuario;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,16 +33,169 @@ public class QuartoView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         painelPrincipal = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaQuartos = new javax.swing.JTable();
+        inputId = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        labelQuartosCadastrados = new javax.swing.JLabel();
+        labelDescricao = new javax.swing.JLabel();
+        inputDescricao = new javax.swing.JTextField();
+        labelCapacidade = new javax.swing.JLabel();
+        labelTipoQuarto = new javax.swing.JLabel();
+        inputTipoQuartoCombo = new javax.swing.JComboBox();
+        btInserir = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        inputCapacidade = new javax.swing.JFormattedTextField();
+
+        setClosable(true);
+        setTitle("Quartos");
+        setToolTipText("");
+
+        tabelaQuartos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "N", "Capacidade", "Tipo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaQuartos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaQuartos);
+
+        inputId.setEnabled(false);
+        inputId.setFocusable(false);
+
+        jLabel1.setText("ID");
+
+        labelQuartosCadastrados.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        labelQuartosCadastrados.setText("Quartos Cadastrados");
+
+        labelDescricao.setText("Descrição");
+
+        labelCapacidade.setText("Capacidade");
+
+        labelTipoQuarto.setText("Tipo");
+
+        inputTipoQuartoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-ok.png"))); // NOI18N
+        btInserir.setToolTipText("Cadastrar quarto");
+        btInserir.setMaximumSize(new java.awt.Dimension(60, 60));
+        btInserir.setMinimumSize(new java.awt.Dimension(60, 60));
+        btInserir.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-delete.png"))); // NOI18N
+        btExcluir.setToolTipText("Excluir quarto");
+        btExcluir.setMaximumSize(new java.awt.Dimension(60, 60));
+        btExcluir.setMinimumSize(new java.awt.Dimension(60, 60));
+        btExcluir.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-edit.png"))); // NOI18N
+        btEditar.setToolTipText("Atualizar quarto");
+        btEditar.setMaximumSize(new java.awt.Dimension(60, 60));
+        btEditar.setMinimumSize(new java.awt.Dimension(60, 60));
+        btEditar.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        inputCapacidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelTipoQuarto)
+                                .addGap(44, 44, 44)
+                                .addComponent(inputTipoQuartoCombo, 0, 163, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelDescricao)
+                                .addGap(18, 18, 18)
+                                .addComponent(inputDescricao)))
+                        .addGap(18, 18, 18)
+                        .addComponent(labelCapacidade)
+                        .addGap(18, 18, 18)
+                        .addComponent(inputCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelQuartosCadastrados)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(inputId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDescricao)
+                    .addComponent(inputDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCapacidade)
+                    .addComponent(inputCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTipoQuarto)
+                    .addComponent(inputTipoQuartoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(labelQuartosCadastrados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -52,7 +211,23 @@ public class QuartoView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btInserir;
+    private javax.swing.JFormattedTextField inputCapacidade;
+    private javax.swing.JTextField inputDescricao;
+    private javax.swing.JTextField inputId;
+    private javax.swing.JComboBox inputTipoQuartoCombo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelCapacidade;
+    private javax.swing.JLabel labelDescricao;
+    private javax.swing.JLabel labelQuartosCadastrados;
+    private javax.swing.JLabel labelTipoQuarto;
     private javax.swing.JPanel painelPrincipal;
+    private javax.swing.JTable tabelaQuartos;
     // End of variables declaration//GEN-END:variables
 }

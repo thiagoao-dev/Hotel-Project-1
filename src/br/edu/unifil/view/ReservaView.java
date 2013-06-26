@@ -6,19 +6,45 @@ package br.edu.unifil.view;
 
 import br.edu.unifil.model.QuartoModel;
 import br.edu.unifil.model.ReservaModel;
+import br.edu.unifil.model.UsuarioModel;
 import br.edu.unifil.model.VisitanteModel;
 
 /**
- *
+ * View Reserva
  * @author ThiagoAugustus
  */
 public class ReservaView extends javax.swing.JInternalFrame {
 
+    // Define os atributos
+    private ReservaModel reserva;
+    private UsuarioModel usuario;
+    
     /**
-     * Creates new form ReservaView
+     * Construtor padrão
      */
-    public ReservaView() {
+    public ReservaView(UsuarioModel usuario) {
+        
+        initComponents();        
+        this.reserva = null;
+        this.usuario = usuario;
+        
+    }
+    
+    /**
+     * Construto e inicia a view como parametro reserva
+     * @param reserva 
+     */
+    public ReservaView(ReservaModel reserva, UsuarioModel usuario) {
+        
         initComponents();
+        this.reserva = reserva;
+        this.usuario = usuario;
+        
+    }
+    
+    private void validaUsuario(UsuarioModel usuario){
+        
+        
     }
     
     /**
@@ -213,10 +239,10 @@ public class ReservaView extends javax.swing.JInternalFrame {
                     .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(inputSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelDataSaida)
-                        .addComponent(labelDataEntrada)
-                        .addComponent(inputSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelDataEntrada))
                     .addComponent(inputEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -232,7 +258,7 @@ public class ReservaView extends javax.swing.JInternalFrame {
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPago)
                     .addComponent(inputCheckPago))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -245,28 +271,26 @@ public class ReservaView extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-        
-        // Inicia os atributos necessários
-        VisitanteModel hospede = new VisitanteModel();
-        QuartoModel    quarto  = new QuartoModel();
-        ReservaModel   reserva = new ReservaModel();
-        
-        reserva.setVisitanteReserva(hospede);
-        reserva.setQuartoReserva(quarto);
-        
-        // Recupera o quarto
-        quarto.setDescricaoQuarto((String) this.inputComboQuarto.getSelectedItem());
-        
-        System.out.println(this.inputComboQuarto.getSelectedItem());
-        
-        this.dispose();
+
+        VisitanteModel hospede;
+        QuartoModel quarto;
+
+        if( this.reserva.getIdReserva() > 0 ) {
+            hospede = this.reserva.getVisitanteReserva();
+            quarto  = this.reserva.getQuartoReserva();
+        } else {
+            hospede = new VisitanteModel();
+            quarto  = new QuartoModel();
+        }
+
+        //        this.dispose();
     }//GEN-LAST:event_btInserirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

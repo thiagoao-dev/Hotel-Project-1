@@ -20,7 +20,6 @@
                 <Property name="text" type="java.lang.String" value="Fazer Reserva"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btReservaFazerMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btReservaFazerActionPerformed"/>
               </Events>
             </MenuItem>
@@ -41,6 +40,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btQuartoConsultarActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
