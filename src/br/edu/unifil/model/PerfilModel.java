@@ -6,6 +6,7 @@ package br.edu.unifil.model;
  */
 public class PerfilModel {
     
+    // Atributos do objeto
     private int            idPerfil;
     private String         descricaoPerfil;
     private boolean        statusPerfil;

@@ -1,7 +1,7 @@
 package br.edu.unifil.model;
 
 /**
- * Objeto Visitante
+ * Object Visitante
  * @author ThiagoAugustus
  */
 public class VisitanteModel {

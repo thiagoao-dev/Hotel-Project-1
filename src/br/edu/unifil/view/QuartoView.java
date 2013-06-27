@@ -46,6 +46,7 @@ public class QuartoView extends javax.swing.JInternalFrame {
         // Recupera a permissao
         PermissaoModel permissoes = perfil.getPermissaoPerfil();
         
+        // Verifica as permissoes
         if ( !permissoes.isReadPermissao() ){
             this.tabelaQuartos.setVisible(false);
         }

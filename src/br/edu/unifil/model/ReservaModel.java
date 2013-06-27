@@ -3,7 +3,7 @@ package br.edu.unifil.model;
 import java.util.Date;
 
 /**
- * Objeto Reserva
+ * Object Reserva
  * @author ThiagoAugustus
  */
 public class ReservaModel {

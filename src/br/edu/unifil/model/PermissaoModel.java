@@ -17,6 +17,7 @@ public class PermissaoModel {
      */
     public PermissaoModel(){ 
     
+        // Atributos do objeto
         this.idPermissao     = 0;
         this.readPermissao   = false;
         this.createPermissao = false;

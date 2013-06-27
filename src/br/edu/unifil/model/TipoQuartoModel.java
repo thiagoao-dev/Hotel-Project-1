@@ -1,7 +1,7 @@
 package br.edu.unifil.model;
 
 /**
- * Objeto TipoQuarto
+ * Object TipoQuarto
  * @author ThiagoAugustus
  */
 public class TipoQuartoModel {

@@ -1,11 +1,12 @@
 package br.edu.unifil.model;
 
 /**
- * Objeto Usuario
+ * Object Usuario
  * @author ThiagoAugustus
  */
 public class UsuarioModel {
  
+    // Atributos do objeto
     private int         idUsuario;
     private String      loginUsuario;
     private String      passwordUsuario;

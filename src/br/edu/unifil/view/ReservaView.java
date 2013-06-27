@@ -61,6 +61,7 @@ public class ReservaView extends javax.swing.JInternalFrame {
         // Recupera a permissao
         PermissaoModel permissoes = perfil.getPermissaoPerfil();
         
+        // Verifica as permissoes
         if ( !permissoes.isCreatePermissao() ){
             this.btCreate.setVisible(false);
         }
