@@ -3,10 +3,8 @@ package br.edu.unifil.view;
 import br.edu.unifil.model.PerfilModel;
 import br.edu.unifil.model.PermissaoModel;
 import br.edu.unifil.model.UsuarioModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-public class MainView extends javax.swing.JFrame implements ChangeListener{
+public class MainView extends javax.swing.JFrame {
 
     private ReservaView reservaView = null;
     private QuartoView  quartoView  = null;
@@ -16,11 +14,6 @@ public class MainView extends javax.swing.JFrame implements ChangeListener{
     public MainView() {
         
         initComponents();
-        
-        LoginView login = new LoginView(this);
-        desktopPrincipal.add(login);
-        login.setVisible(true);
-        this.stateChanged(new ChangeEvent(nome));
                
         // Usuario teste
         this.usuario = new UsuarioModel();
@@ -29,7 +22,7 @@ public class MainView extends javax.swing.JFrame implements ChangeListener{
         permissoes.setReadPermissao(true);
         permissoes.setCreatePermissao(true);
         permissoes.setUpdatePermissao(true);
-        permissoes.setDeletePermissao(false);
+        permissoes.setDeletePermissao(true);
         perfil.setPermissaoPerfil(permissoes);
         this.usuario.setPerfilUsuario(perfil);
     }
@@ -251,8 +244,4 @@ public class MainView extends javax.swing.JFrame implements ChangeListener{
     private javax.swing.JPanel painelInfoPrincipal;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void stateChanged(ChangeEvent ce) {
-        System.out.println(this.nome);
-    }
 }

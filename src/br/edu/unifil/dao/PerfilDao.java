@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Perfil CRUD Object
@@ -345,6 +347,61 @@ public class PerfilDao {
         }
         
         return true;
+    }
+    
+    public List<PerfilModel> listAll() throws SQLException {
+
+        Connection        con  = DBConnection.getConnection();
+        Statement         stm  = null;
+        ResultSet         res;
+        List<PerfilModel> list = new ArrayList<PerfilModel>();
+
+        String sql = "SELECT PF.*, P.create, P.read, P.update, P.delete FROM perfil PF INNER JOIN permissoes P USING(idpermissao)";
+
+        try {
+
+            // Faz a consulta no banco de dados
+            stm = con.createStatement();
+            res = stm.executeQuery(sql);
+            
+            // Varre todo o retorno
+            while (res.next()) {
+                
+                // Inicializa os objetos
+                PerfilModel perfil       = new PerfilModel();
+                PermissaoModel permissao = new PermissaoModel();
+
+                // Recupera as permissoes do perfil
+                permissao.setIdPermissao(res.getInt("idpermissao"));
+                permissao.setCreatePermissao(res.getBoolean("create"));
+                permissao.setReadPermissao(res.getBoolean("read"));
+                permissao.setUpdatePermissao(res.getBoolean("update"));
+                permissao.setDeletePermissao(res.getBoolean("delete"));
+                
+                // Recupera os atributos do perfil
+                perfil.setPermissaoPerfil(permissao);
+                perfil.setIdPerfil(res.getInt("idperfil"));
+                perfil.setDescricaoPerfil(res.getString("descricao"));
+                perfil.setStatusPerfil(res.getBoolean("status"));
+                
+                // Adciona a lista
+                list.add(perfil);
+
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println("Não foi possível listar os perfis.");
+
+        } finally {
+
+            stm.close();
+            con.close();
+
+        }
+
+        return list;
+    
     }
     
 }
