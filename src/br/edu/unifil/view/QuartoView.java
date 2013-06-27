@@ -6,6 +6,8 @@ package br.edu.unifil.view;
 
 import br.edu.unifil.model.PerfilModel;
 import br.edu.unifil.model.PermissaoModel;
+import br.edu.unifil.model.QuartoModel;
+import br.edu.unifil.model.TipoQuartoModel;
 import br.edu.unifil.model.UsuarioModel;
 
 /**
@@ -14,7 +16,9 @@ import br.edu.unifil.model.UsuarioModel;
  */
 public class QuartoView extends javax.swing.JInternalFrame {
 
-    private UsuarioModel usuario;
+    private UsuarioModel    usuario;
+    private QuartoModel     quarto;
+    private TipoQuartoModel tipoQuarto;
     
     /**
      * Classe construtora
@@ -22,8 +26,15 @@ public class QuartoView extends javax.swing.JInternalFrame {
      */
     public QuartoView(UsuarioModel usuario) {
         initComponents();
+        
+        // Valida o usuario
         this.usuario = usuario;
         validaUsuario( this.usuario.getPerfilUsuario() );
+        
+        // Inicializa os atributos
+        this.quarto     = new QuartoModel();
+        this.tipoQuarto = new TipoQuartoModel();
+        
     }
     
     /**

@@ -4,6 +4,8 @@
  */
 package br.edu.unifil.view;
 
+import br.edu.unifil.model.PerfilModel;
+import br.edu.unifil.model.PermissaoModel;
 import br.edu.unifil.model.QuartoModel;
 import br.edu.unifil.model.ReservaModel;
 import br.edu.unifil.model.UsuarioModel;
@@ -24,9 +26,14 @@ public class ReservaView extends javax.swing.JInternalFrame {
      */
     public ReservaView(UsuarioModel usuario) {
         
-        initComponents();        
-        this.reserva = null;
+        initComponents();
+        
+        // Valida usuario
         this.usuario = usuario;
+        validaUsuario( usuario.getPerfilUsuario() );
+        
+        // Inicializa os atributo
+        this.reserva = new ReservaModel();
         
     }
     
@@ -37,13 +44,26 @@ public class ReservaView extends javax.swing.JInternalFrame {
     public ReservaView(ReservaModel reserva, UsuarioModel usuario) {
         
         initComponents();
-        this.reserva = reserva;
+        
+        // Valida usuario
         this.usuario = usuario;
+        validaUsuario( usuario.getPerfilUsuario() );
         
-    }
-    
-    private void validaUsuario(UsuarioModel usuario){
+        // Inicializa os atributo
+        this.reserva = reserva;
         
+    }/**
+     * Valida as permissoes
+     * @param perfil 
+     */
+    private void validaUsuario(PerfilModel perfil){
+        
+        // Recupera a permissao
+        PermissaoModel permissoes = perfil.getPermissaoPerfil();
+        
+        if ( !permissoes.isCreatePermissao() ){
+            this.btCreate.setVisible(false);
+        }
         
     }
     
@@ -75,7 +95,7 @@ public class ReservaView extends javax.swing.JInternalFrame {
         inputTextObs = new javax.swing.JTextArea();
         labelPago = new javax.swing.JLabel();
         inputCheckPago = new javax.swing.JCheckBox();
-        btInserir = new javax.swing.JButton();
+        btCreate = new javax.swing.JButton();
         inputEntrada = new org.jdesktop.swingx.JXDatePicker();
         inputSaida = new org.jdesktop.swingx.JXDatePicker();
 
@@ -152,14 +172,16 @@ public class ReservaView extends javax.swing.JInternalFrame {
         inputCheckPago.setBackground(new java.awt.Color(204, 204, 204));
         inputCheckPago.setFocusable(false);
 
-        btInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-ok.png"))); // NOI18N
-        btInserir.setToolTipText("Registrar reserva");
-        btInserir.setBorderPainted(false);
-        btInserir.setOpaque(false);
-        btInserir.setPreferredSize(new java.awt.Dimension(60, 60));
-        btInserir.addActionListener(new java.awt.event.ActionListener() {
+        btCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-ok.png"))); // NOI18N
+        btCreate.setToolTipText("Registrar reserva");
+        btCreate.setBorderPainted(false);
+        btCreate.setMaximumSize(new java.awt.Dimension(60, 60));
+        btCreate.setMinimumSize(new java.awt.Dimension(60, 60));
+        btCreate.setOpaque(false);
+        btCreate.setPreferredSize(new java.awt.Dimension(60, 60));
+        btCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btInserirActionPerformed(evt);
+                btCreateActionPerformed(evt);
             }
         });
 
@@ -216,7 +238,7 @@ public class ReservaView extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPrincipalLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         painelPrincipalLayout.setVerticalGroup(
@@ -258,8 +280,8 @@ public class ReservaView extends javax.swing.JInternalFrame {
                 .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPago)
                     .addComponent(inputCheckPago))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -271,13 +293,13 @@ public class ReservaView extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+    private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
 
         VisitanteModel hospede;
         QuartoModel quarto;
@@ -291,10 +313,10 @@ public class ReservaView extends javax.swing.JInternalFrame {
         }
 
         //        this.dispose();
-    }//GEN-LAST:event_btInserirActionPerformed
+    }//GEN-LAST:event_btCreateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btInserir;
+    private javax.swing.JButton btCreate;
     private javax.swing.JButton btPesquisar;
     private javax.swing.JCheckBox inputCheckPago;
     private javax.swing.JComboBox inputComboQuarto;
