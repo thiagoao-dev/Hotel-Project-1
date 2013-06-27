@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Usuario CRUD Object
+ * Perfil CRUD Object
  * @author ThiagoAugustus
  */
 public class PerfilDao {
