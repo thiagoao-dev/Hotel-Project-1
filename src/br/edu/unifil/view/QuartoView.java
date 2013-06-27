@@ -4,6 +4,8 @@
  */
 package br.edu.unifil.view;
 
+import br.edu.unifil.model.PerfilModel;
+import br.edu.unifil.model.PermissaoModel;
 import br.edu.unifil.model.UsuarioModel;
 
 /**
@@ -21,6 +23,31 @@ public class QuartoView extends javax.swing.JInternalFrame {
     public QuartoView(UsuarioModel usuario) {
         initComponents();
         this.usuario = usuario;
+        validaUsuario( this.usuario.getPerfilUsuario() );
+    }
+    
+    /**
+     * Valida as permissoes
+     * @param perfil 
+     */
+    private void validaUsuario(PerfilModel perfil){
+        
+        // Recupera a permissao
+        PermissaoModel permissoes = perfil.getPermissaoPerfil();
+        
+        if ( !permissoes.isReadPermissao() ){
+            this.tabelaQuartos.setVisible(false);
+        }
+        if ( !permissoes.isUpdatePermissao() ){
+            this.btEdite.setVisible(false);
+        }
+        if ( !permissoes.isCreatePermissao() ){
+            this.btCreate.setVisible(false);
+        }
+        if ( !permissoes.isDeletePermissao() ){
+            this.btDelete.setVisible(false);
+        }
+        
     }
     
     /**
@@ -44,9 +71,9 @@ public class QuartoView extends javax.swing.JInternalFrame {
         labelCapacidade = new javax.swing.JLabel();
         labelTipoQuarto = new javax.swing.JLabel();
         inputTipoQuartoCombo = new javax.swing.JComboBox();
-        btInserir = new javax.swing.JButton();
-        btExcluir = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
+        btCreate = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
+        btEdite = new javax.swing.JButton();
         inputCapacidade = new javax.swing.JFormattedTextField();
 
         setClosable(true);
@@ -98,23 +125,23 @@ public class QuartoView extends javax.swing.JInternalFrame {
 
         inputTipoQuartoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-ok.png"))); // NOI18N
-        btInserir.setToolTipText("Cadastrar quarto");
-        btInserir.setMaximumSize(new java.awt.Dimension(60, 60));
-        btInserir.setMinimumSize(new java.awt.Dimension(60, 60));
-        btInserir.setPreferredSize(new java.awt.Dimension(60, 60));
+        btCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-ok.png"))); // NOI18N
+        btCreate.setToolTipText("Cadastrar quarto");
+        btCreate.setMaximumSize(new java.awt.Dimension(60, 60));
+        btCreate.setMinimumSize(new java.awt.Dimension(60, 60));
+        btCreate.setPreferredSize(new java.awt.Dimension(60, 60));
 
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-delete.png"))); // NOI18N
-        btExcluir.setToolTipText("Excluir quarto");
-        btExcluir.setMaximumSize(new java.awt.Dimension(60, 60));
-        btExcluir.setMinimumSize(new java.awt.Dimension(60, 60));
-        btExcluir.setPreferredSize(new java.awt.Dimension(60, 60));
+        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-delete.png"))); // NOI18N
+        btDelete.setToolTipText("Excluir quarto");
+        btDelete.setMaximumSize(new java.awt.Dimension(60, 60));
+        btDelete.setMinimumSize(new java.awt.Dimension(60, 60));
+        btDelete.setPreferredSize(new java.awt.Dimension(60, 60));
 
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-edit.png"))); // NOI18N
-        btEditar.setToolTipText("Atualizar quarto");
-        btEditar.setMaximumSize(new java.awt.Dimension(60, 60));
-        btEditar.setMinimumSize(new java.awt.Dimension(60, 60));
-        btEditar.setPreferredSize(new java.awt.Dimension(60, 60));
+        btEdite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/unifil/image/ic-edit.png"))); // NOI18N
+        btEdite.setToolTipText("Atualizar quarto");
+        btEdite.setMaximumSize(new java.awt.Dimension(60, 60));
+        btEdite.setMinimumSize(new java.awt.Dimension(60, 60));
+        btEdite.setPreferredSize(new java.awt.Dimension(60, 60));
 
         inputCapacidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0"))));
 
@@ -142,11 +169,11 @@ public class QuartoView extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btEdite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelQuartosCadastrados)
@@ -181,10 +208,10 @@ public class QuartoView extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btEdite, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
@@ -209,13 +236,13 @@ public class QuartoView extends javax.swing.JInternalFrame {
             .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setBounds(0, 0, 405, 371);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btEditar;
-    private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btInserir;
+    private javax.swing.JButton btCreate;
+    private javax.swing.JButton btDelete;
+    private javax.swing.JButton btEdite;
     private javax.swing.JFormattedTextField inputCapacidade;
     private javax.swing.JTextField inputDescricao;
     private javax.swing.JTextField inputId;

@@ -1,5 +1,7 @@
 package br.edu.unifil.view;
 
+import br.edu.unifil.model.PerfilModel;
+import br.edu.unifil.model.PermissaoModel;
 import br.edu.unifil.model.UsuarioModel;
 
 public class MainView extends javax.swing.JFrame {
@@ -10,7 +12,17 @@ public class MainView extends javax.swing.JFrame {
     
     public MainView() {
         initComponents();
+        
+        // Usuario teste
         this.usuario = new UsuarioModel();
+        PerfilModel perfil = new PerfilModel();
+        PermissaoModel permissoes = new PermissaoModel();
+        permissoes.setReadPermissao(true);
+        permissoes.setCreatePermissao(true);
+        permissoes.setUpdatePermissao(true);
+        permissoes.setDeletePermissao(false);
+        perfil.setPermissaoPerfil(permissoes);
+        this.usuario.setPerfilUsuario(perfil);
     }
 
     /**
