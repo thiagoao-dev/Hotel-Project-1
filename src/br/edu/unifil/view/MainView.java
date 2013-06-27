@@ -3,21 +3,25 @@ package br.edu.unifil.view;
 import br.edu.unifil.model.PerfilModel;
 import br.edu.unifil.model.PermissaoModel;
 import br.edu.unifil.model.UsuarioModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-public class MainView extends javax.swing.JFrame {
+public class MainView extends javax.swing.JFrame implements ChangeListener{
 
     private ReservaView reservaView = null;
     private QuartoView  quartoView  = null;
     private UsuarioModel usuario;
-        
+    protected String nome = "";
+     
     public MainView() {
         
         initComponents();
         
-        LoginView login = new LoginView();
+        LoginView login = new LoginView(this);
         desktopPrincipal.add(login);
         login.setVisible(true);
-        
+        this.stateChanged(new ChangeEvent(nome));
+               
         // Usuario teste
         this.usuario = new UsuarioModel();
         PerfilModel perfil = new PerfilModel();
@@ -29,7 +33,7 @@ public class MainView extends javax.swing.JFrame {
         perfil.setPermissaoPerfil(permissoes);
         this.usuario.setPerfilUsuario(perfil);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -224,7 +228,7 @@ public class MainView extends javax.swing.JFrame {
             this.quartoView.setVisible(true);
         } else {
             System.out.println("Não é possivel criar uma nova instância!");
-        }
+        }        
     }//GEN-LAST:event_btQuartoConsultarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -246,4 +250,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuPrincipal;
     private javax.swing.JPanel painelInfoPrincipal;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void stateChanged(ChangeEvent ce) {
+        System.out.println(this.nome);
+    }
 }

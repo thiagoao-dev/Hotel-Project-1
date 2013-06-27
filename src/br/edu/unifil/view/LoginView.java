@@ -10,11 +10,13 @@ package br.edu.unifil.view;
  */
 public class LoginView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form LoginView
+     /**
+     * Metodo construtor
+     * @param mv 
      */
-    public LoginView() {
+    public LoginView(MainView mv) {
         initComponents();
+        mv.nome = "asas";
     }
 
     /**
@@ -129,7 +131,6 @@ public class LoginView extends javax.swing.JInternalFrame {
 
     private void btAccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccessActionPerformed
         // TODO add your handling code here:
-
         this.dispose();
 
     }//GEN-LAST:event_btAccessActionPerformed
